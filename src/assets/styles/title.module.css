@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+
+.title-header {
+    position: relative;
+    margin: 50px 20px;
+    top: 60px;
+    left: 300px;
+    width: 300px;
+    height: 50px;
+    background-color: #E7D37F;
+    border-radius: 5px;
+}
+
+.title-header h1 {
+    font-family: 'Righteous', cursive;
+    font-size: 50px;
+    font-weight: 900;
+    color: #81A263;
+    
+}
