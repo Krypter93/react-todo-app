@@ -10,9 +10,13 @@ const modalSlice = createSlice({
     reducers: {
         showModal: (state) => {
             state.isVisible = true
+        },
+
+        hideModal: (state) => {
+            state.isVisible = false
         }
     }
 })
 
-export const { showModal } = modalSlice.actions
+export const { showModal, hideModal } = modalSlice.actions
 export default modalSlice.reducer
