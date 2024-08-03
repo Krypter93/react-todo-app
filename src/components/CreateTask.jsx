@@ -10,6 +10,7 @@ export const CreateTask = () => {
 
     const handleModal = () => {
         dispatch(showModal())
+        
     }
 
     return <>
