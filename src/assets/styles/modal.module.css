@@ -43,13 +43,14 @@
 }
 
 #modal-info fieldset {
-    margin: 10px auto;
+    margin: 5px auto;
     display: flex;
     flex-direction: column;
     width: 400px;
     height: 200px;
     justify-content: space-evenly;
     align-items: center;
+    border: none;
 }
 
 #modal-info label {
@@ -61,7 +62,7 @@
 
 #modal-info #category {
     position: relative;
-    top: 5px;
+    top: 10px;
     width: 150px;
     height: 50px;
 }
@@ -80,6 +81,22 @@
 #modal-info #task::placeholder {
     position: relative;
     left: 10px;
+    color: #81A263;
+}
+
+#modal-info button {
+    position: relative;
+    top: 30px;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#check {
+    font-size: 20px;
+    text-align: center;
+    align-items: center;
     color: #81A263;
 }
 
