@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import modalReducer from "./modalSlice"
+import taskReducer from "./taskSlice"
 
 const store = configureStore({
     reducer: {
-        modalTask: modalReducer
+        modalTask: modalReducer,
+        task: taskReducer
     }
 })
 
