@@ -4,21 +4,35 @@ import { useDispatch, useSelector } from "react-redux"
 import { hideModal } from "../redux/modalSlice"
 import { setInput } from "../redux/inputSlice";
 /* import { addTask } from "../redux/taskSlice"; */
+import { setSelectModal } from "../redux/selectModalSlice";
 import { FaCheck } from "react-icons/fa";
+import { useEffect } from "react";
 
 export const ModalWindow = () => {
     const dispatch = useDispatch()
     const inputState = useSelector((state) => state.inputTask.input)
     /* const taskState = useSelector((state) => state.task.tasks) */
+    const selectModalState = useSelector((state) => state.selectModal.value)
     
     const handleModalClose = () => {
         dispatch(hideModal())
     }
 
+    // Refactor this later
     const handleOnChangeInput = (e) => {
         dispatch(setInput(e.target.value))
         console.log(inputState)
     }
+
+    // Refactor this laters
+    const handleSelectModalChange = (e) => {
+        dispatch(setSelectModal(e.target.value))
+    }
+
+    // THis useEffect is for debugging purposes only
+    useEffect(() => {
+        console.log('Select changed to: ', selectModalState)
+    }, [selectModalState])
 
     // Refactor this adding a new slice to the store for the 'input 'and 'select' of the modal
     /* const handleModalTask = () => {
@@ -52,10 +66,10 @@ export const ModalWindow = () => {
                 <div id={styles['modal-info']}>
                     <fieldset>
                         <label htmlFor="task">
-                            <input type="text" id={styles['task']} placeholder="Add your task" onChange={handleOnChangeInput} />
+                            <input type="text" id={styles['task']} placeholder="Add your task" value={inputState} onChange={handleOnChangeInput} />
                         </label>
                         <label htmlFor="category">
-                            <select name="category" id={styles['category']}>
+                            <select name="category" id={styles['category']} value={selectModalState} onChange={handleSelectModalChange}>
                                 <option value="Category">Category</option>
                                 <option value="Complete">Complete</option>
                                 <option value="Incomplete">Incomplete</option>
