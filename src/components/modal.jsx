@@ -2,42 +2,39 @@ import styles from "../assets/styles/modal.module.css"
 import { IoMdClose } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux"
 import { hideModal } from "../redux/modalSlice"
-import { setInput } from "../redux/inputSlice";
-/* import { addTask } from "../redux/taskSlice"; */
-import { setSelectModal } from "../redux/selectModalSlice";
+import { setInput, clearInput } from "../redux/inputSlice";
+import { addTask } from "../redux/taskSlice";
+import { setSelectModal, clearSelectModal } from "../redux/selectModalSlice";
 import { FaCheck } from "react-icons/fa";
 import { useEffect } from "react";
 
 export const ModalWindow = () => {
     const dispatch = useDispatch()
     const inputState = useSelector((state) => state.inputTask.input)
-    /* const taskState = useSelector((state) => state.task.tasks) */
     const selectModalState = useSelector((state) => state.selectModal.value)
     
     const handleModalClose = () => {
         dispatch(hideModal())
+        dispatch(clearInput())
+        dispatch(clearSelectModal())
     }
 
-    // Refactor this later
     const handleOnChangeInput = (e) => {
         dispatch(setInput(e.target.value))
-        console.log(inputState)
     }
-
-    // Refactor this laters
+    
     const handleSelectModalChange = (e) => {
         dispatch(setSelectModal(e.target.value))
     }
 
-    // THis useEffect is for debugging purposes only
+    // This useEffect is for debugging purposes only
     useEffect(() => {
         console.log('Select changed to: ', selectModalState)
     }, [selectModalState])
 
-    // Refactor this adding a new slice to the store for the 'input 'and 'select' of the modal
-    /* const handleModalTask = () => {
-        const inputTask = document.querySelector('#task').value.trim()
-        const category = document.querySelector('#category').value
+    const handleModalTask = () => {
+        const inputTask = inputState
+        const category = selectModalState
 
         if (!inputTask || !category || category === 'Category') {
             alert('Please enter a task and select a category')
@@ -45,15 +42,14 @@ export const ModalWindow = () => {
         }
 
         const newTask = {
-            id: Date.now() + '-' + Math.floor(Math.random() *100 + 1),
+            id: Date.now() + '-' + Math.floor(Math.random() * 100 + 1),
             description: inputTask,
             category: category,
             createdAt: new Date().toLocaleString()
         }
 
         dispatch(addTask(newTask))
-        console.log(taskState)
-    } */
+    }
     
 
     return <>
@@ -75,7 +71,7 @@ export const ModalWindow = () => {
                                 <option value="Incomplete">Incomplete</option>
                             </select>
                         </label>
-                        <button><FaCheck id={styles['check']} /></button>
+                        <button><FaCheck id={styles['check']} onClick={handleModalTask} /></button>
                     </fieldset>
                 </div>
             </div>

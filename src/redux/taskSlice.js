@@ -1,14 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    tasks: [
-        {
-            id: '',
-            description: '',
-            category: '',
-            createdAt: '',
-        }
-    ]
+    tasks: []
 }
 
 const taskSlice = createSlice({
@@ -17,7 +10,12 @@ const taskSlice = createSlice({
     reducers: {
         // Refactor this later
         addTask: (state, action) => {
-            state.tasks.push(action.payload)
+            state.tasks.push ({
+                id : action.payload.id,
+                description : action.payload.description,
+                category : action.payload.category,
+                createdAt : action.payload.createdAt})
+            
             localStorage.setItem('tasks', JSON.stringify(state.tasks))
         }
     }
