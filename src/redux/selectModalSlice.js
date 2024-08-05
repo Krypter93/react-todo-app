@@ -10,9 +10,12 @@ const selectModalSlice = createSlice({
     reducers: {
         setSelectModal: (state, action) => {
             state.value = action.payload
+        },
+        clearSelectModal: (state) => {
+            state.value = 'Category'
         }
     }
 })
 
-export const { setSelectModal } = selectModalSlice.actions
+export const { setSelectModal, clearSelectModal } = selectModalSlice.actions
 export default selectModalSlice.reducer

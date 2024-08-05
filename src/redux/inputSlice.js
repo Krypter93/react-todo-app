@@ -10,9 +10,12 @@ const inputSlice = createSlice({
     reducers: {
         setInput: (state, action) => {
             state.input = action.payload
+        },
+        clearInput: (state) => {
+            state.input = ''
         }
     }
 })
 
-export const { setInput } = inputSlice.actions
+export const { setInput, clearInput } = inputSlice.actions
 export default inputSlice.reducer
