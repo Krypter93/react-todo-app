@@ -1,6 +1,6 @@
 import styles from "../assets/styles/taskView.module.css"
 
-export const TaskView = () => {
+export const TaskView = ({mainSelect}) => {
     const taskStorage = JSON.parse(localStorage.getItem('tasks')) || []
     console.log(taskStorage)
     return <>
