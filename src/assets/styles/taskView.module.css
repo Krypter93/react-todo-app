@@ -5,7 +5,7 @@
     top: 270px;
     left: 280px;
     width: 780px;
-    height: 200px;
+    height: fit-content;
     margin: 50px;
     background-color: #E7D37F;
     border: none;
@@ -31,4 +31,23 @@
 .task-empty p {
     font-size: 20px;
     line-height: 10px;
+}
+
+.task-view .task-list {
+    position: relative;
+    width: 90%;
+    height: fit-content;
+    background-color: brown;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.task-list li {
+    list-style: none;
+    position: relative;
+    margin: 5px;
+    width: 95%;
+    height: 80px;
+    background-color: #81A263;
 }
