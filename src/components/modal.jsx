@@ -49,6 +49,9 @@ export const ModalWindow = () => {
         }
 
         dispatch(addTask(newTask))
+        dispatch(hideModal())
+        dispatch(clearInput())
+        dispatch(clearSelectModal())
     }
     
 
