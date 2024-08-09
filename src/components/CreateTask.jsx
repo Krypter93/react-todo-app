@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { showModal } from "../redux/modalSlice"
 import { TaskView } from "./TaskView"
 import { setMainSelect } from "../redux/mainSelectSlice"
-import { useEffect } from "react"
+import { React } from "react"
 
 
 export const CreateTask = () => {
@@ -20,21 +20,15 @@ export const CreateTask = () => {
         dispatch(setMainSelect(e.target.value))
     }
 
-    // Just for debugging purposes
-    useEffect(() => {
-        console.log('Main Select changed to: ' + mainSelectState)
-    }, [mainSelectState])
-
     return <>
         <section className={styles['create-task']}>
             <button onClick={handleModal}>Add Task</button>
             <select value={mainSelectState} onChange={handleSelectChange}>
                 <option value="Incomplete">Incomplete</option>
                 <option value="Complete">Complete</option>
-                <option value="All">All</option>
             </select>
         </section>
-        {modal && <ModalWindow mainSelect />}
-        <TaskView mainSelect= {mainSelectState} />
+        {modal && <ModalWindow />}
+        <TaskView mainSelect={mainSelectState} />
     </>
 }
