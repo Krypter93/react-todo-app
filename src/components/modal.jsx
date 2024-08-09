@@ -6,7 +6,8 @@ import { setInput, clearInput } from "../redux/inputSlice";
 import { addTask } from "../redux/taskSlice";
 import { setSelectModal, clearSelectModal } from "../redux/selectModalSlice";
 import { FaCheck } from "react-icons/fa";
-import { useEffect } from "react";
+import { useEffect, React } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 export const ModalWindow = () => {
     const dispatch = useDispatch()
@@ -42,7 +43,7 @@ export const ModalWindow = () => {
         }
 
         const newTask = {
-            id: Date.now() + '-' + Math.floor(Math.random() * 100 + 1),
+            id: uuidv4(),
             description: inputTask,
             category: category,
             createdAt: new Date().toLocaleString()

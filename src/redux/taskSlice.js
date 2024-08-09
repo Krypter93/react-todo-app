@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    tasks: []
+    tasks: JSON.parse(localStorage.getItem('tasks')) || []
 }
 
 const taskSlice = createSlice({
@@ -17,9 +17,14 @@ const taskSlice = createSlice({
                 createdAt : action.payload.createdAt})
             
             localStorage.setItem('tasks', JSON.stringify(state.tasks))
+        },
+        deleteTask: (state, action) => {
+            state.tasks = state.tasks.filter(task => task.id !== action.payload.id)
+
+            localStorage.setItem('tasks', JSON.stringify(state.tasks))
         }
     }
 })
 
-export const { addTask } = taskSlice.actions
+export const { addTask, deleteTask } = taskSlice.actions
 export default taskSlice.reducer

@@ -1,16 +1,23 @@
 import styles from "../assets/styles/taskView.module.css"
 import PropTypes from 'prop-types'
 import { MdDelete } from "react-icons/md";
+import {React, useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {deleteTask} from "../redux/taskSlice";
 
 export const TaskView = ({mainSelect}) => {
     const taskStorage = JSON.parse(localStorage.getItem('tasks')) || []
+    const taskState = useSelector(state => state.task.tasks)
     const tasks = taskStorage.filter(task => task.category === mainSelect)
-    console.log(taskStorage)
+    const dispatch = useDispatch()
 
     const handelDeleteTask = (id) => {
-        const newTasks = taskStorage.filter(task => task.id !== id)
-        localStorage.setItem('tasks', JSON.stringify(newTasks))
+        dispatch(deleteTask({id}))
     }
+
+    useEffect(() => {
+        <TaskView mainSelect={mainSelect} />
+    }, [taskState])
 
     return <>
         <section className={styles['task-view']}>
