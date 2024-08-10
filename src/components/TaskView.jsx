@@ -27,8 +27,10 @@ export const TaskView = ({mainSelect}) => {
                 </div>
             :
              <ul className={styles['task-list']}>
+                
                 {tasks.map(task => {
                     return <li key={task.id}>
+                        <input type="checkbox" />
                         <p>{task.description}</p>
                         <p>{task.createdAt}</p>
                         <MdDelete id={styles['delete-icon']} onClick={() => handelDeleteTask(task.id)}/>
