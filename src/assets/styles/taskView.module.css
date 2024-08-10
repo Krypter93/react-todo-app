@@ -60,15 +60,28 @@
     border-radius: 5px;
 }
 
+.task-list li input {
+    position: relative;
+    top: 23px;
+    left: -10px;
+    z-index: 1;
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 .task-list li p {
     position: relative;
-    margin: 20px;
+    margin: 20px 75px;
+    top: -35px;
 }
 
 .task-list #delete-icon {
     position: relative;
     display: inline-block;
-    top: -55px;
+    top: -90px;
     left: 650px;
     font-size: 30px;
     cursor: pointer;
