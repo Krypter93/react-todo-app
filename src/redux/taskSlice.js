@@ -22,9 +22,21 @@ const taskSlice = createSlice({
             state.tasks = state.tasks.filter(task => task.id !== action.payload.id)
 
             localStorage.setItem('tasks', JSON.stringify(state.tasks))
+        },
+        modifyTaskCategory: (state, action) => {
+            state.tasks = state.tasks.map(task => {
+                if (task.id === action.payload.id) {
+                    return {...task,
+                        category: action.payload.category
+                    }
+                }
+                return task 
+            })
+
+            localStorage.setItem('tasks', JSON.stringify(state.tasks))
         }
     }
 })
 
-export const { addTask, deleteTask } = taskSlice.actions
+export const { addTask, deleteTask, modifyTaskCategory } = taskSlice.actions
 export default taskSlice.reducer

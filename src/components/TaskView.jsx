@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import { MdDelete } from "react-icons/md";
 import {React, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {deleteTask} from "../redux/taskSlice";
+import {deleteTask, modifyTaskCategory} from "../redux/taskSlice";
 
 export const TaskView = ({mainSelect}) => {
-    const taskStorage = JSON.parse(localStorage.getItem('tasks')) || []
+    const taskStorage = useSelector(state => state.task.tasks)
     const taskState = useSelector(state => state.task.tasks)
-    const tasks = taskStorage.filter(task => task.category === mainSelect)
+    const tasks = taskStorage.filter(task => task !== null && task.category === mainSelect)
     const dispatch = useDispatch()
 
     const handelDeleteTask = (id) => {
@@ -18,6 +18,11 @@ export const TaskView = ({mainSelect}) => {
     useEffect(() => {
         <TaskView mainSelect={mainSelect} />
     }, [taskState])
+
+    const handleCategoryChange = (id) => {
+        dispatch(modifyTaskCategory({id, category: 'Complete'}))
+        mainSelect = 'Complete'
+    }
 
     return <>
         <section className={styles['task-view']}>
@@ -30,7 +35,7 @@ export const TaskView = ({mainSelect}) => {
                 
                 {tasks.map(task => {
                     return <li key={task.id}>
-                        <input type="checkbox" />
+                        <input type="checkbox" onClick={() => handleCategoryChange(task.id)}/>
                         <p>{task.description}</p>
                         <p>{task.createdAt}</p>
                         <MdDelete id={styles['delete-icon']} onClick={() => handelDeleteTask(task.id)}/>
