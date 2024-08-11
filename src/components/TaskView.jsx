@@ -6,9 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {deleteTask, modifyTaskCategory} from "../redux/taskSlice";
 
 export const TaskView = ({mainSelect}) => {
-    const taskStorage = useSelector(state => state.task.tasks)
     const taskState = useSelector(state => state.task.tasks)
-    const tasks = taskStorage.filter(task => task !== null && task.category === mainSelect)
+    const tasks = taskState.filter(task => task !== null && task.category === mainSelect)
     const dispatch = useDispatch()
 
     const handelDeleteTask = (id) => {
@@ -17,7 +16,7 @@ export const TaskView = ({mainSelect}) => {
 
     useEffect(() => {
         <TaskView mainSelect={mainSelect} />
-    }, [taskState])
+    }, [mainSelect])
 
     const handleCategoryChange = (id) => {
         dispatch(modifyTaskCategory({id, category: 'Complete'}))
@@ -26,7 +25,7 @@ export const TaskView = ({mainSelect}) => {
 
     return <>
         <section className={styles['task-view']}>
-            {taskStorage.length < 1 ?
+            {tasks.length < 1 ?
                 <div className={styles['task-empty']}>
                     <p>No tasks</p>
                 </div>
