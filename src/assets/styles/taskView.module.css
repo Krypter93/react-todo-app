@@ -92,7 +92,7 @@
 /* Small devices (vertical mode) */
 @media only screen and (max-width: 576px) {
     .task-view {
-        position: absolute;
+        position: relative;
         top: 200px;
         left: -10px;
         width: 80%;
