@@ -98,3 +98,54 @@
     color: #81A263;
 }
 
+/* Media queries */
+/* Small devices (vertical mode) */
+@media only screen and (max-width: 576px) {
+    .modal-container {
+        top: 45%;
+        left: 50%;
+        width: 90%;
+        height: 300px;
+    }
+
+    .modal-task #close {
+        left: 280px;
+    }
+
+    .modal-task #modal-info {
+        position: relative;
+        width: 100%;
+    }
+
+    #modal-info fieldset {
+        width: 100%;
+        justify-content:flex-start;
+        align-items: center;
+        left: -50px;
+    }
+
+    #modal-info #task {
+        width: 100%;
+    }
+
+    #modal-info input {
+        position: relative;
+        top: 10px;
+        left: -20px;
+        width: 100%;
+    }
+
+    #modal-info #category {
+        position: relative;
+        top: 30px;
+        left: -5px;
+    }
+
+    #modal-info button {
+        position: relative;
+        top: 60px;
+        left: -5px;
+    }
+
+}
+
