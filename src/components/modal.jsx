@@ -75,7 +75,7 @@ export const ModalWindow = () => {
                                 <option value="Incomplete">Incomplete</option>
                             </select>
                         </label>
-                        <button><FaCheck id={styles['check']} onClick={handleModalTask} /></button>
+                        <button onClick={handleModalTask}><FaCheck id={styles['check']} /></button>
                     </fieldset>
                 </div>
             </div>

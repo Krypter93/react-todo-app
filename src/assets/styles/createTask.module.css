@@ -23,3 +23,19 @@
     font-family: Righteous;
     cursor: pointer;
 }
+
+/* Media queries */
+/* Small devices (vertical mode) */
+@media only screen and (max-width: 576px) {
+    .create-task {
+        position: relative;
+        justify-content: space-around;
+        gap: 20px;
+        width: 300px;
+        top: -10px;
+    }
+
+    .create-task button, select {
+        width: 150px;
+    }
+}

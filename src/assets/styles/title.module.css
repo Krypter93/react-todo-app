@@ -18,3 +18,14 @@
     color: #81A263;
     
 }
+
+/* Media queries */
+/* Small devices (vertical mode) */
+@media only screen and (max-width: 576px) {
+    .title-header {
+        position: relative;
+        top: 10px;
+        left: -10px;
+        width: 250px;
+    }
+}
