@@ -28,10 +28,6 @@ export const ModalWindow = () => {
         dispatch(setSelectModal(e.target.value))
     }
 
-    // This useEffect is for debugging purposes only
-    useEffect(() => {
-        console.log('Select changed to: ', selectModalState)
-    }, [selectModalState])
 
     const handleModalTask = () => {
         const inputTask = inputState
