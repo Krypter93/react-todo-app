@@ -93,8 +93,36 @@
 @media only screen and (max-width: 576px) {
     .task-view {
         position: relative;
-        top: 200px;
-        left: -10px;
-        width: 80%;
+        top: -20px;
+        left: -33px;
+        width: 90%;
+    }
+
+    .task-list li{
+        position: relative;
+        width: 100%;
+    }
+
+    .task-list li input {
+        position: relative;
+        height: 20px;
+        top: 25px;
+        left: -30px;
+    }
+
+    .task-list li p {
+        position: relative;
+        margin: 15px 0;
+        top: -18px;
+        left: 45px;
+        font-size: 16px;
+    }
+
+    .task-list #delete-icon {
+        position: relative;
+        display: inline-block;
+        top: -65px;
+        left: 245px;
+        height: 25px;
     }
 }
