@@ -67,7 +67,6 @@ export const ModalWindow = () => {
                         <label htmlFor="category">
                             <select name="category" id={styles['category']} value={selectModalState} onChange={handleSelectModalChange}>
                                 <option value="Category">Category</option>
-                                <option value="Complete">Complete</option>
                                 <option value="Incomplete">Incomplete</option>
                             </select>
                         </label>
