@@ -11,6 +11,7 @@
     align-items: center;
     width: 600px;
     height: 300px;
+    z-index: 2;
 }
 
 .modal-container .modal-task {

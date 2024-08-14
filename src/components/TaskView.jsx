@@ -12,11 +12,9 @@ export const TaskView = ({mainSelect}) => {
 
     const handelDeleteTask = (id) => {
         dispatch(deleteTask({id}))
+        console.log('Event triggered');
+        
     }
-
-    useEffect(() => {
-        <TaskView mainSelect={mainSelect} />
-    }, [mainSelect])
 
     const handleCategoryChange = (id) => {
         dispatch(modifyTaskCategory({id, category: 'Complete'}))
@@ -34,10 +32,10 @@ export const TaskView = ({mainSelect}) => {
                 
                 {tasks.map(task => {
                     return <li key={task.id}>
-                        <input type="checkbox" onClick={() => handleCategoryChange(task.id)}/>
+                        <input type="checkbox" onClick={() => handleCategoryChange(task.id)} />
                         <p>{task.description}</p>
                         <p>{task.createdAt}</p>
-                        <MdDelete id={styles['delete-icon']} onClick={() => handelDeleteTask(task.id)}/>
+                        <MdDelete id={styles['delete-icon']} onClick={() => handelDeleteTask(task.id)} />
                     </li>
                 })}
              </ul>
