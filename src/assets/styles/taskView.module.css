@@ -13,7 +13,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: -1;
 }
 
 .task-view .task-empty {
@@ -70,6 +69,7 @@
     height: 30px;
     border: none;
     border-radius: 5px;
+    z-index: 1;
     cursor: pointer;
 }
 

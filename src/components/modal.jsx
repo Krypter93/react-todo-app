@@ -61,10 +61,10 @@ export const ModalWindow = () => {
 
                 <div id={styles['modal-info']}>
                     <fieldset>
-                        <label htmlFor="task">
+                        <label htmlFor={styles["task"]} >
                             <input type="text" id={styles['task']} placeholder="Add your task" value={inputState} onChange={handleOnChangeInput} />
                         </label>
-                        <label htmlFor="category">
+                        <label htmlFor={styles["category"]}>
                             <select name="category" id={styles['category']} value={selectModalState} onChange={handleSelectModalChange}>
                                 <option value="Category">Category</option>
                                 <option value="Incomplete">Incomplete</option>
