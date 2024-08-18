@@ -33,9 +33,15 @@ export const TaskView = ({mainSelect}) => {
                 {tasks.map(task => {
                     return <li key={task.id}>
                         <input type="checkbox" onClick={() => handleCategoryChange(task.id)} />
-                        <p>{task.description}</p>
+                        <div id={styles['description']}>
+                            <p style={mainSelect === 'Complete' ? { textDecoration: 'line-through' } : {}}>{task.description}</p>
+                        </div>
+                        <div id={styles['created']}>
                         <p>{task.createdAt}</p>
-                        <MdDelete id={styles['delete-icon']} onClick={() => handelDeleteTask(task.id)} />
+                        </div>
+                        <div id={styles['delete']}>
+                            <MdDelete id={styles['delete-icon']} onClick={() => handelDeleteTask(task.id)} />
+                        </div>
                     </li>
                 })}
              </ul>
