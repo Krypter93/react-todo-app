@@ -1,24 +1,31 @@
 import styles from "../assets/styles/taskView.module.css"
 import PropTypes from 'prop-types'
 import { MdDelete } from "react-icons/md";
-import {React, useEffect} from "react";
+import {React} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {deleteTask, modifyTaskCategory} from "../redux/taskSlice";
+import { MdEdit } from "react-icons/md";
+import { ModalEditTask } from "./modalEditTask";
+import { editState } from "../redux/editTaskSlice";
 
 export const TaskView = ({mainSelect}) => {
     const taskState = useSelector(state => state.task.tasks)
     const tasks = taskState.filter(task => task !== null && task.category === mainSelect)
+    const edit = useSelector(state => state.editionTask.edit)
     const dispatch = useDispatch()
 
     const handelDeleteTask = (id) => {
         dispatch(deleteTask({id}))
-        console.log('Event triggered');
         
     }
 
     const handleCategoryChange = (id) => {
         dispatch(modifyTaskCategory({id, category: 'Complete'}))
         mainSelect = 'Complete'
+    }
+
+    const handleEditTask = (id) => {
+        dispatch(editState(id))
     }
 
     return <>
@@ -39,9 +46,11 @@ export const TaskView = ({mainSelect}) => {
                         <div id={styles['created']}>
                         <p>{task.createdAt}</p>
                         </div>
-                        <div id={styles['delete']}>
+                        <div id={styles['delete-edit']}>
+                            <MdEdit id={styles['edit-icon']} onClick={() => handleEditTask(task.id)} />
                             <MdDelete id={styles['delete-icon']} onClick={() => handelDeleteTask(task.id)} />
                         </div>
+                        {edit === task.id && <ModalEditTask taskId={task.id} taskDescription={task.description}/>}
                     </li>
                 })}
              </ul>

@@ -34,9 +34,22 @@ const taskSlice = createSlice({
             })
 
             localStorage.setItem('tasks', JSON.stringify(state.tasks))
+        },
+        modifyTask: (state, action) => {
+            state.tasks = state.tasks.map(task => {
+                if (task.id === action.payload.id) {
+                    return {
+                        ...task,
+                        description: action.payload.description
+                    }
+                }
+                return task
+            })
+
+            localStorage.setItem('tasks', JSON.stringify(state.tasks))
         }
     }
 })
 
-export const { addTask, deleteTask, modifyTaskCategory } = taskSlice.actions
+export const { addTask, deleteTask, modifyTaskCategory, modifyTask } = taskSlice.actions
 export default taskSlice.reducer
