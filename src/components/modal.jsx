@@ -6,7 +6,7 @@ import { setInput, clearInput } from "../redux/inputSlice";
 import { addTask } from "../redux/taskSlice";
 import { setSelectModal, clearSelectModal } from "../redux/selectModalSlice";
 import { FaCheck } from "react-icons/fa";
-import { useEffect, React } from "react";
+import { React } from "react";
 import { v4 as uuidv4 } from 'uuid';
 
 export const ModalWindow = () => {
@@ -74,8 +74,6 @@ export const ModalWindow = () => {
                     </fieldset>
                 </div>
             </div>
-
-            
         </section>
     </>
 }

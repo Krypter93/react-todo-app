@@ -4,6 +4,8 @@ import taskReducer from "./taskSlice"
 import inputReducer from "./inputSlice"
 import selectModalReducer from "./selectModalSlice"
 import mainSelectReducer from "./mainSelectSlice"
+import editReducer from "./editTaskSlice"
+import editInputReducer from "./editInputSlice"
 
 const store = configureStore({
     reducer: {
@@ -11,7 +13,9 @@ const store = configureStore({
         task: taskReducer,
         inputTask: inputReducer,
         selectModal: selectModalReducer,
-        mainSelect: mainSelectReducer
+        mainSelect: mainSelectReducer,
+        editionTask: editReducer,
+        editInput: editInputReducer
     }
 })
 
