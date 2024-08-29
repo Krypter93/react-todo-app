@@ -7,6 +7,8 @@ import {deleteTask, modifyTaskCategory} from "../redux/taskSlice";
 import { MdEdit } from "react-icons/md";
 import { ModalEditTask } from "./modalEditTask";
 import { editState } from "../redux/editTaskSlice";
+import { toast } from 'react-toastify';
+
 
 export const TaskView = ({mainSelect}) => {
     const taskState = useSelector(state => state.task.tasks)
@@ -16,12 +18,13 @@ export const TaskView = ({mainSelect}) => {
 
     const handelDeleteTask = (id) => {
         dispatch(deleteTask({id}))
-        
+        toast.success('Task deleted')
     }
 
     const handleCategoryChange = (id) => {
         dispatch(modifyTaskCategory({id, category: 'Complete'}))
         mainSelect = 'Complete'
+        toast.success('Task completed')
     }
 
     const handleEditTask = (id) => {

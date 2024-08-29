@@ -8,6 +8,8 @@ import { setSelectModal, clearSelectModal } from "../redux/selectModalSlice";
 import { FaCheck } from "react-icons/fa";
 import { React } from "react";
 import { v4 as uuidv4 } from 'uuid';
+import { toast } from 'react-toastify';
+
 
 export const ModalWindow = () => {
     const dispatch = useDispatch()
@@ -34,7 +36,7 @@ export const ModalWindow = () => {
         const category = selectModalState
 
         if (!inputTask || !category || category === 'Category') {
-            alert('Please enter a task and select a category')
+            toast.error('Please enter a task and select a category')
             return
         }
 
@@ -49,6 +51,7 @@ export const ModalWindow = () => {
         dispatch(hideModal())
         dispatch(clearInput())
         dispatch(clearSelectModal())
+        toast.success('Task added')
     }
     
 

@@ -4,6 +4,7 @@ import { editState } from '../redux/editTaskSlice';
 import { modifyTask } from '../redux/taskSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { setEditInput, clearEditInput } from '../redux/editInputSlice';
+import { toast } from 'react-toastify';
 
 export const ModalEditTask = ({taskId, taskDescription}) => {
     const dispatch = useDispatch()
@@ -20,12 +21,13 @@ export const ModalEditTask = ({taskId, taskDescription}) => {
 
     const handleUpdateTask = () => {
         if (inputEditState === '') {
-            alert('Please update your task')
+            toast.error('Please update your task')
             return
         }
         dispatch(modifyTask({id: taskId, description: inputEditState}))
         dispatch(editState(null))
         dispatch(clearEditInput())
+        toast.success('Task updated')
     }
 
     return <>
