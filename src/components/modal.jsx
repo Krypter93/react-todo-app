@@ -36,7 +36,7 @@ export const ModalWindow = () => {
         const category = selectModalState
 
         if (!inputTask || !category || category === 'Category') {
-            toast.error('Please enter a task and select a category')
+            toast.error('Please enter a task and select a category', {theme: 'colored' })
             return
         }
 
@@ -51,7 +51,7 @@ export const ModalWindow = () => {
         dispatch(hideModal())
         dispatch(clearInput())
         dispatch(clearSelectModal())
-        toast.success('Task added')
+        toast.success('Task added', {theme: 'colored'})
     }
     
 

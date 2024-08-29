@@ -18,13 +18,13 @@ export const TaskView = ({mainSelect}) => {
 
     const handelDeleteTask = (id) => {
         dispatch(deleteTask({id}))
-        toast.success('Task deleted')
+        toast.success('Task deleted', {theme: 'colored'})
     }
 
     const handleCategoryChange = (id) => {
         dispatch(modifyTaskCategory({id, category: 'Complete'}))
         mainSelect = 'Complete'
-        toast.success('Task completed')
+        toast.success('Task completed',  {theme: 'colored'})
     }
 
     const handleEditTask = (id) => {

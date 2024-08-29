@@ -1,7 +1,7 @@
 import { TitleHeader } from "./components/TitleHeader"
 import { CreateTask } from "./components/CreateTask"
 import React from "react"
-import { ToastContainer, toast } from 'react-toastify';
+import { Slide, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function App() {
 
@@ -9,7 +9,7 @@ function App() {
     <>
       <TitleHeader />
       <CreateTask />
-      <ToastContainer autoClose={1800} />
+      <ToastContainer autoClose={2000} transition={Slide} />
     </>
   )
 }
