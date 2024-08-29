@@ -21,13 +21,13 @@ export const ModalEditTask = ({taskId, taskDescription}) => {
 
     const handleUpdateTask = () => {
         if (inputEditState === '') {
-            toast.error('Please update your task')
+            toast.error('Please update your task',  {theme: 'colored'})
             return
         }
         dispatch(modifyTask({id: taskId, description: inputEditState}))
         dispatch(editState(null))
         dispatch(clearEditInput())
-        toast.success('Task updated')
+        toast.success('Task updated',  {theme: 'colored'})
     }
 
     return <>
