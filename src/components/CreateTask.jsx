@@ -15,7 +15,6 @@ export const CreateTask = () => {
 
     const handleModal = () => {
         dispatch(showModal())
-        inputRef.current.focus()
     }
 
     useEffect(() => {
