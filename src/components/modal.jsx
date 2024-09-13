@@ -6,12 +6,12 @@ import { setInput, clearInput } from "../redux/inputSlice";
 import { addTask } from "../redux/taskSlice";
 import { setSelectModal, clearSelectModal } from "../redux/selectModalSlice";
 import { FaCheck } from "react-icons/fa";
-import { React } from "react";
+import { forwardRef, React} from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { toast } from 'react-toastify';
 
 
-export const ModalWindow = () => {
+export const ModalWindow = forwardRef((props, ref) => {
     const dispatch = useDispatch()
     const inputState = useSelector((state) => state.inputTask.input)
     const selectModalState = useSelector((state) => state.selectModal.value)
@@ -31,7 +31,7 @@ export const ModalWindow = () => {
     }
 
 
-    const handleModalTask = () => {
+    const handleModalTask = (ref) => {
         const inputTask = inputState
         const category = selectModalState
 
@@ -65,7 +65,7 @@ export const ModalWindow = () => {
                 <div id={styles['modal-info']}>
                     <fieldset>
                         <label htmlFor={styles["task"]} >
-                            <input type="text" id={styles['task']} placeholder="Add your task" value={inputState} onChange={handleOnChangeInput} />
+                            <input ref={ref} type="text" id={styles['task']} placeholder="Add your task" value={inputState} onChange={handleOnChangeInput} />
                         </label>
                         <label htmlFor={styles["category"]}>
                             <select name="category" id={styles['category']} value={selectModalState} onChange={handleSelectModalChange}>
@@ -79,4 +79,4 @@ export const ModalWindow = () => {
             </div>
         </section>
     </>
-}
+})
